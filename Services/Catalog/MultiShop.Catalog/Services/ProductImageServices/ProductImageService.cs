@@ -30,10 +30,10 @@ public class ProductImageService : IProductImageService
          await _productImageCollection.DeleteOneAsync(x => x.ProductImageId == id);
     }
 
-    public async Task<List<ProductImage>> GetAllProductImagesAsync()
+    public async Task<List<ResultProductImageDto>> GetAllProductImagesAsync()
     {
         var values = await _productImageCollection.Find(x=>true).ToListAsync();
-        return _mapper.Map<List<ProductImage>>(values);
+        return _mapper.Map<List<ResultProductImageDto>>(values);
     }
 
     public Task<GetByIdProductImageDto> GetProductImageByIdAsync(string id)

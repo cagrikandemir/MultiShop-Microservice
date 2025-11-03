@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using MultiShop.Catalog.Services.CategoryServices;
+using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
 using MultiShop.Catalog.Services.ProductServices;
 using MultiShop.Catalog.Settings;
@@ -12,6 +13,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 
 //.Net 8.0 Üstü AutoMapper Kaydı için Dependency Injection Eklentisi Kur
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
