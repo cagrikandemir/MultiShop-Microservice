@@ -6,7 +6,7 @@ public interface IDiscountService
 {
     Task<List<ResultCouponDto>> GetAllCouponAsync();
     Task CreateCouponAsync (CreateCouponDto createCouponDto);
-    Task DeleteCouponAsync (int Id);
+    Task DeleteCouponAsync (string Id);
     Task UpdateCouponAsync (UpdateCouponDto updateCouponDto);
-    Task<GetByIdCouponDto> GetByIdCouponAsync(int Id);
+    Task<GetByIdCouponDto> GetByIdCouponAsync(string Id);
 }

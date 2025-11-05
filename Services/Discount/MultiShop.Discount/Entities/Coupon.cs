@@ -1,8 +1,13 @@
-﻿namespace MultiShop.Discount.Entities;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace MultiShop.Discount.Entities;
 
 public class Coupon
 {
-    public int CouponId { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string CouponId { get; set; }
     public string Code { get; set; }
     public int Rate { get; set; }
     public bool IsActive { get; set; }

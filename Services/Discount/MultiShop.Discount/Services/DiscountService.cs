@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using MongoDB.Driver;
 using MultiShop.Discount.Dtos;
 using MultiShop.Discount.Entities;
@@ -19,28 +20,32 @@ public class DiscountService : IDiscountService
         _mapper = mapper;
     }
 
-    public Task CreateCouponAsync(CreateCouponDto createCouponDto)
+    public async Task CreateCouponAsync(CreateCouponDto createCouponDto)
     {
-        throw new NotImplementedException();
+        var value = _mapper.Map<Coupon>(createCouponDto);
+        await _couponCollection.InsertOneAsync(value); 
     }
 
-    public Task DeleteCouponAsync(int Id)
+    public async Task DeleteCouponAsync(string Id)
     {
-        throw new NotImplementedException();
+        await _couponCollection.DeleteOneAsync(x=>x.CouponId==Id);
     }
 
-    public Task<List<ResultCouponDto>> GetAllCouponAsync()
+    public async Task<List<ResultCouponDto>> GetAllCouponAsync()
     {
-        throw new NotImplementedException();
+        var values =await _couponCollection.Find(Coupon => true).ToListAsync();
+        return _mapper.Map<List<ResultCouponDto>>(values);
     }
 
-    public Task<GetByIdCouponDto> GetByIdCouponAsync(int Id)
+    public async Task<GetByIdCouponDto> GetByIdCouponAsync(string Id)
     {
-        throw new NotImplementedException();
+        var value = await _couponCollection.Find<Coupon>(x=>x.CouponId==Id).FirstOrDefaultAsync();
+        return _mapper.Map<GetByIdCouponDto>(value);
     }
 
-    public Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
+    public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
     {
-        throw new NotImplementedException();
+        var value = _mapper.Map<Coupon>(updateCouponDto);
+        await _couponCollection.ReplaceOneAsync(x=>x.CouponId==updateCouponDto.CouponId,value);
     }
 }
