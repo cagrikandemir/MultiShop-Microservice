@@ -1,6 +1,8 @@
-﻿namespace MultiShop.Order.Domain.Entities;
+﻿using MediatR;
 
-public class Address
+namespace MultiShop.Order.Application.Features.CQRS.Results.AdressResults;
+
+public class GetAddressByIdQueryResult 
 {
     public int AddressId { get; set; }
     public string UserId { get; set; }

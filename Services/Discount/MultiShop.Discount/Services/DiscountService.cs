@@ -23,7 +23,7 @@ public class DiscountService : IDiscountService
     public async Task CreateCouponAsync(CreateCouponDto createCouponDto)
     {
         var value = _mapper.Map<Coupon>(createCouponDto);
-        await _couponCollection.InsertOneAsync(value); 
+        await _couponCollection.InsertOneAsync(value);
     }
 
     public async Task DeleteCouponAsync(string Id)

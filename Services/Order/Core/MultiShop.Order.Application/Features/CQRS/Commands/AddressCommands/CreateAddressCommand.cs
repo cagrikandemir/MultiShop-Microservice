@@ -1,8 +1,9 @@
-﻿namespace MultiShop.Order.Domain.Entities;
+﻿using MediatR;
 
-public class Address
+namespace MultiShop.Order.Application.Features.CQRS.Commands.AddressCommands;
+
+public class CreateAddressCommand :IRequest
 {
-    public int AddressId { get; set; }
     public string UserId { get; set; }
     public string District { get; set; }
     public string City { get; set; }
