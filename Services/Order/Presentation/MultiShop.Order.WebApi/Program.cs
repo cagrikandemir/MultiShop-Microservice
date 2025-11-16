@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using MultiShop.Order.Application.Interfaces;
 using MultiShop.Order.Application.Services;
 using MultiShop.Order.Persistence.Context;
@@ -6,12 +7,17 @@ using MultiShop.Order.Persistence.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.RequireHttpsMetadata = false;
+    opt.Audience = "ResourceOrder";
+    opt.RefreshOnIssuerKeyNotFound = true;
+});
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.addApplicationServices(builder.Configuration);
 builder.Services.AddDbContext<OrderContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 //builder.Services.AddScoped<CreateAddressCommand>();
 //builder.Services.AddScoped<UpdateAddressCommand>();
 //builder.Services.AddScoped<RemoveAddressCommands>();
@@ -38,6 +44,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

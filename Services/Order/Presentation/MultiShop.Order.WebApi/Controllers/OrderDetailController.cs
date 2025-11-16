@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
@@ -7,6 +8,7 @@ using MultiShop.Order.Application.Features.CQRS.Results.OrderDetailResults;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class OrderDetailController : ControllerBase

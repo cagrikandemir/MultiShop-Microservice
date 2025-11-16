@@ -1,10 +1,12 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.CQRS.Commands.AddressCommands;
 using MultiShop.Order.Application.Features.CQRS.Queries.AddressQueries;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AddressController : ControllerBase
