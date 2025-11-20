@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MultiShop.Order.Application.Interfaces;
-using MultiShop.Order.Persistence.Context;
+using MultiShop.Cargo.Application.Interfaces;
+using MultiShop.Cargo.Persistence.Context;
 using System.Linq.Expressions;
 
-namespace MultiShop.Order.Persistence.Repositories;
+namespace MultiShop.Cargo.Persistence.Repository;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    private readonly OrderContext _context;
+    private readonly CargoContext _context;
 
-    public Repository(OrderContext context)
+    public Repository(CargoContext context)
     {
         _context = context;
     }
 
-    public async Task AddAsync(T entity)
+    public async Task CreateAsync(T entity)
     {
         await _context.AddAsync(entity);
         await _context.SaveChangesAsync();
@@ -22,11 +22,11 @@ public class Repository<T> : IRepository<T> where T : class
 
     public async Task DeleteAsync(T entity)
     {
-         _context.Remove(entity);
+        _context.Remove(entity);
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<T>> GetAllAsync()
+    public async Task<List<T>> GetAllCargoAsync()
     {
         var values = await _context.Set<T>().ToListAsync();
         return values;
@@ -39,13 +39,14 @@ public class Repository<T> : IRepository<T> where T : class
 
     public async Task<T> GetByIdAsync(int Id)
     {
-        return await _context.Set<T>().FindAsync(Id);
-
+        var value = await _context.Set<T>().FindAsync(Id);
+        return value;
     }
 
     public async Task UpdateAsync(T entity)
     {
-        var value = _context.Set<T>().Update(entity);
+        _context.Set<T>().Update(entity);
         await _context.SaveChangesAsync();
+        
     }
 }
