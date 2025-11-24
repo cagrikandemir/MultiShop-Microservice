@@ -12,7 +12,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Authority = builder.Configuration["IdentityServerUrl"];
     opt.RequireHttpsMetadata = false;
     opt.Audience = "ResourceOrder";
-    opt.RefreshOnIssuerKeyNotFound = true;
+    //opt.RefreshOnIssuerKeyNotFound = true;
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.addApplicationServices(builder.Configuration);
