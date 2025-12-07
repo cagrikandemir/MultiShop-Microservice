@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.0.11222.15 d18.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -58,6 +58,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{E3B891
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Basket", "Services\Basket\MultiShop.Basket\MultiShop.Basket.csproj", "{358B57CF-32DF-4D5E-B19E-A9273A1A4E84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{3BAC18C2-5361-4166-846C-9E5FB268E626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.WebUI", "Frontends\MultiShop.WebUI\MultiShop.WebUI.csproj", "{7F289D2A-CA34-4D92-858B-5E439E0C16FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +116,10 @@ Global
 		{358B57CF-32DF-4D5E-B19E-A9273A1A4E84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{358B57CF-32DF-4D5E-B19E-A9273A1A4E84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{358B57CF-32DF-4D5E-B19E-A9273A1A4E84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F289D2A-CA34-4D92-858B-5E439E0C16FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F289D2A-CA34-4D92-858B-5E439E0C16FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F289D2A-CA34-4D92-858B-5E439E0C16FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F289D2A-CA34-4D92-858B-5E439E0C16FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +148,7 @@ Global
 		{40AD7AE0-B55A-4A21-8A37-F190D0F2418E} = {F44B34E5-9425-4D79-9930-4DA3458944B3}
 		{E3B8917E-9FE0-4586-BAFF-06EF1BA7D71F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{358B57CF-32DF-4D5E-B19E-A9273A1A4E84} = {E3B8917E-9FE0-4586-BAFF-06EF1BA7D71F}
+		{7F289D2A-CA34-4D92-858B-5E439E0C16FD} = {3BAC18C2-5361-4166-846C-9E5FB268E626}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0BBDFA8-F44E-4814-B7FE-7CFECA9B0E02}
