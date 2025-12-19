@@ -6,7 +6,8 @@ using MultiShop.Catalog.Services.ProductServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
+    //[Authorize]
     [Route("[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -28,6 +29,12 @@ namespace MultiShop.Catalog.Controllers
         {
             var value = await _productService.GetByIdProductAsync(Id);
             return Ok(value);
+        }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetProductWithCategory()
+        {
+            var values = await _productService.GetProductsWithCategoryAsync();
+            return Ok(values);
         }
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)

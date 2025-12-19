@@ -1,0 +1,39 @@
+﻿@model UpdateProductDto;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürün Düzenle</h4>
+                <p> Ürün ile ilgili işlemleri gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Ürün Id</label>
+                        <input asp-for="ProductId" class="form-control" type="text" />
+                        <br />
+                        <label>Ürün Adı</label>
+                        <input asp-for="ProductName" class="form-control" type="text" />
+                        <br />
+                        <label>Ürün Fiyatı</label>
+                        <input asp-for="ProductPrice" class="form-control" type="text" />
+                        <br />
+                        <label>Ürün Görseli</label>
+                        <input asp-for="ProductImageUrl" class="form-control" type="text" />
+                        <br />
+                        <label>Ürün Kategorisi</label>
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.CategoryValues, new { @class = "form-control" })
+                        <br />
+                        <label>Ürün Açıklaması</label>
+                        <textarea asp-for="ProductDescription" class="form-control" rows="7" type="text"></textarea>
+                        <br />
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                        <a href="/Admin/Product/ProductListWithCategory" class="btn btn-warning">Geri Dön</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
