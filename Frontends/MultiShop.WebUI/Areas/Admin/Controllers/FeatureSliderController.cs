@@ -60,7 +60,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return View();
         }
         [Route("DeleteFeatureSlider/{id}")]
-        public async Task<IActionResult> DeleteFeatureSlider(int id)
+        public async Task<IActionResult> DeleteFeatureSlider(string id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync($"https://localhost:7084/FeatureSliders/DeleteFeatureSlider/{id}");
@@ -72,10 +72,10 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         [HttpGet]
         [Route("UpdateFeatureSlider/{id}")]
-        public async Task<IActionResult>UpdateFeatureSlider(int id)
+        public async Task<IActionResult>UpdateFeatureSlider(string id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7084/FeatureSliders/GetAllFeatureSliders/"+id);
+            var responseMessage = await client.GetAsync($"https://localhost:7084/FeatureSliders/GetFeatureSliderById/" +id);
             if(responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
