@@ -4,4 +4,6 @@ public class UpdateCategoryDto
 {
     public string CatagoryId { get; set; }
     public string CategoryName { get; set; }
+    public string ImageUrl { get; set; }
+
 }

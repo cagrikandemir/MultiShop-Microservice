@@ -3,11 +3,13 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace MultiShop.Catalog.Entities;
 
-public class Category
+public class OfferDiscount
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string CatagoryId { get; set; }
-    public string CategoryName{ get; set; }
+    public string OfferDiscountId { get; set; }
+    public string Title { get; set; }
+    public string SubTitle { get; set; }
     public string ImageUrl { get; set; }
+    public string ButtonTitle { get; set; }
 }
