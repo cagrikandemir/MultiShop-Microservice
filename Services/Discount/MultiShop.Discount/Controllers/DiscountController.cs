@@ -5,7 +5,7 @@ using MultiShop.Discount.Services;
 
 namespace MultiShop.Discount.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [Route("[controller]")]
     [ApiController]
     public class DiscountController : ControllerBase

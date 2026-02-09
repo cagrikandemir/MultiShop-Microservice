@@ -27,7 +27,7 @@ namespace MultiShop.IdentityServer.Controllers
                 UserName = userRegisterDto.UserName,
                 Email = userRegisterDto.Email,
                 Name = userRegisterDto.Name,
-                SurnName = userRegisterDto.SurnName,
+                SurName = userRegisterDto.SurName,
             };
             var result = await _userManager.CreateAsync(user, userRegisterDto.Password);
             if (result.Succeeded)

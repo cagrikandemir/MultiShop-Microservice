@@ -18,28 +18,32 @@ public class OfferDiscountService : IOfferDiscountService
         _offerdiscountServices = database.GetCollection<OfferDiscount>(_databaseSettings.OfferDiscountCollectionName);
     }
 
-    public Task CreateOfferDiscount(CreateOfferDiscountDto createOfferDiscountDto)
+    public  Task CreateOfferDiscount(CreateOfferDiscountDto createOfferDiscountDto)
     {
-        throw new NotImplementedException();
+        var value =  _mapper.Map<OfferDiscount>(createOfferDiscountDto);
+        return  _offerdiscountServices.InsertOneAsync(value);
     }
 
-    public Task DeleteOfferDiscount(string Id)
+    public  Task DeleteOfferDiscount(string Id)
     {
-        throw new NotImplementedException();
+        return  _offerdiscountServices.DeleteManyAsync(x=>x.OfferDiscountId==Id);
     }
 
-    public Task<List<ResultOfferDiscountDto>> GetAllOfferDiscountOffer()
+    public async Task<List<ResultOfferDiscountDto>> GetAllOfferDiscountOffer()
     {
-        throw new NotImplementedException();
+        var values = await _offerdiscountServices.Find(x=>true).ToListAsync();
+        return _mapper.Map<List<ResultOfferDiscountDto>>(values);
     }
 
-    public Task<GetByIdOfferDiscountDto> GetByIdOfferDiscount(string Id)
+    public async Task<GetByIdOfferDiscountDto> GetByIdOfferDiscount(string Id)
     {
-        throw new NotImplementedException();
+        var value = await _offerdiscountServices.Find(x => x.OfferDiscountId == Id).FirstOrDefaultAsync();
+        return _mapper.Map<GetByIdOfferDiscountDto>(value);
     }
 
     public Task UpdateOfferDiscount(UpdateOfferDiscountDto updateOfferDiscountDto)
     {
-        throw new NotImplementedException();
+        var value = _mapper.Map<OfferDiscount>(updateOfferDiscountDto);
+        return _offerdiscountServices.ReplaceOneAsync(x => x.OfferDiscountId == updateOfferDiscountDto.OfferDiscountId, value);
     }
 }
