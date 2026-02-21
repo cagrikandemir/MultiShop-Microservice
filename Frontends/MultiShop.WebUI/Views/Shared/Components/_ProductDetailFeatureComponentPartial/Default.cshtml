@@ -1,6 +1,7 @@
-﻿<div class="col-lg-7 h-auto mb-30">
+﻿@model UpdateProductDto
+<div class="col-lg-7 h-auto mb-30">
     <div class="h-100 bg-light p-30">
-        <h3>Iphone 17 Pro</h3>
+        <h3>@Model.ProductName</h3>
         <div class="d-flex mb-3">
             <div class="text-primary mr-2">
                 <small class="fas fa-star"></small>
@@ -11,12 +12,12 @@
             </div>
             <small class="pt-1">(58 Yorum)</small>
         </div>
-        <h3 class="font-weight-semi-bold mb-4">TL150.00</h3>
+        <h3 class="font-weight-semi-bold mb-4">@Model.ProductPrice</h3>
         <p class="mb-4">
-            Karşınızda iPhone 17 Pro ve iPhone 17 Pro Max.
+            @Model.ProductDescription @* iPhone 17 Pro ve iPhone 17 Pro Max.
             Şimdiye kadarki en güçlü iPhone modelleri olmak için baştan aşağı yeniden tasarlandılar.
             Sıcak dövme alüminyumdan üretilmiş yekpare kasanın temel alındığı yeni tasarımda performans,
-            pil kapasitesi ve dayanıklılık maksimum seviyeye çıkıyor.
+            pil kapasitesi ve dayanıklılık maksimum seviyeye çıkıyor. *@
         </p>
         <div class="d-flex mb-3">
             <strong class="text-dark mr-3">Sizes:</strong>

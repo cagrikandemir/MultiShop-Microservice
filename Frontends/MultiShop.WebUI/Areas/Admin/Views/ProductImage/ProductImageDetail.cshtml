@@ -1,0 +1,36 @@
+﻿@model UpdateProductImageDto;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Görsel Düzenle</h4>
+                <p> Ürün Görseli ile ilgili işlemleri gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input asp-for="ProductImageId" class="form-control" type="hidden" />
+                        <input asp-for="ProductId" class="form-control" type="hidden" />
+                        <br />
+                        <label> Görsel 1  </label>
+                        <input asp-for="Image1" class="form-control" type="text" />
+                        <br />
+                        <label>Görsel 2 </label>
+                        <input asp-for="Image2" class="form-control" type="text" />
+                        <br />
+                        <label>Görsel 3 </label>
+                        <input asp-for="Image3" class="form-control" type="text" />
+                        <br />
+                        <label>Görsel 4 </label>
+                        <input asp-for="Image4" class="form-control" type="text" />
+                        <br />
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                        <button type="submit" href="/Admin/Product/ProductListWithCategory" class="btn btn-warning">Geri Dön</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
