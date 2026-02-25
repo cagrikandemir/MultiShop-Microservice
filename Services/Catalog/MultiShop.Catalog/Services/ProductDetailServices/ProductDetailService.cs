@@ -42,6 +42,12 @@ public class ProductDetailService : IProductDetailService
         return _mapper.Map<GetByIdProductDetailDto>(value);
     }
 
+    public async Task<GetByIdProductDetailDto> GetProductDetailByProductIdAsync(string Id)
+    {
+        var value = await _productDetailCollection.Find<ProductDetail>(x => x.ProductId == Id).FirstOrDefaultAsync();
+        return _mapper.Map<GetByIdProductDetailDto>(value);
+    }
+
     public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
     {
         var value = _mapper.Map<ProductDetail>(updateProductDetailDto);
