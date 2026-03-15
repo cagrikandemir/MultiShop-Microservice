@@ -32,7 +32,7 @@ public class Repository<T> : IRepository<T> where T : class
 
     public async Task<T> GetByIdCommentAsync(int Id)
     {
-        return await _context.Set<T>().FindAsync();
+        return await _context.Set<T>().FindAsync(Id);
     }
 
     public async Task UpdateComment(T Entity)

@@ -36,9 +36,9 @@ namespace MultiShop.Comment.WebApi.Controllers
             return Ok("Yorum Eklendi");
         }
         [HttpDelete("[Action]/{Id}")]
-        public async Task<IActionResult>DeleteUserComment(RemoveUserCommentCommand removeUserCommentCommand)
+        public async Task<IActionResult>DeleteUserComment(int Id)
         {
-            await _mediator.Send(removeUserCommentCommand);
+            await _mediator.Send(new RemoveUserCommentCommand(Id));
             return Ok("Yorum Silindi");
         }
         [HttpPut("[Action]")]
