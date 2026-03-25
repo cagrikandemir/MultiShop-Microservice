@@ -1,0 +1,42 @@
+﻿@model UpdateCommentDto;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Yorum Düzenle</h4>
+                <p> Yorum ile ilgili işlemleri gerçekleştirebilirsiniz.</p>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <input asp-for="UserCommentId" class="form-control" type="hidden" />
+                        <input asp-for="ProductId" class="form-control" type="hidden" />
+                        <br />
+                        <label>Kullanıcı Adı</label>
+                        <input asp-for="NameSurname" class="form-control" type="text" />
+                        <br />
+                        <label>Email</label>
+                        <input asp-for="Email" class="form-control" type="text" />
+                        <br />                      
+                        <label>Yorum Tarihi</label>
+                        <input asp-for="CreatedDate" class="form-control" type="date" />
+                        <br />
+                        <label>Ürün Puanı</label>
+                        <input asp-for="Rating" class="form-control" type="text" />
+                        <br />
+                        <label>Ürün Görseli</label>
+                        <input asp-for="ImageUrl" class="form-control" type="text" />
+                        <br />
+                        <label>Yorum</label>
+                        <textarea asp-for="CommentDetail" class="form-control" rows="3"></textarea>
+                        <br />
+                        <button type="submit" class="btn btn-primary">Güncelle</button>
+                        <a href="/Admin/Comment/Index" class="btn btn-warning">Geri Dön</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

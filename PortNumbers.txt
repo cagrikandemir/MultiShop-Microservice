@@ -3,3 +3,4 @@ Catalog  -->  7084
 Discount -->  7085
 Order    -->  7086
 Basket   -->  7087
+Comment	 -->  7088
