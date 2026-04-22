@@ -1,8 +1,7 @@
-﻿namespace MultiShop.DtoLayer.CatalogDtos.CommentDtos;
+﻿namespace MultiShop.DtoLayer.CommentDtos;
 
-public class UpdateCommentDto
+public class CreateCommentDto
 {
-    public int UserCommentId { get; set; }
     public string NameSurname { get; set; }
     public string Email { get; set; }
     public string CommentDetail { get; set; }

@@ -1,6 +1,6 @@
-﻿namespace MultiShop.DtoLayer.CatalogDtos.CommentDtos;
+﻿namespace MultiShop.DtoLayer.CommentDtos;
 
-public class GetByIdCommentDto
+public class ResultCommentDto
 {
     public int UserCommentId { get; set; }
     public string NameSurname { get; set; }

@@ -1,7 +1,8 @@
-﻿namespace MultiShop.DtoLayer.CatalogDtos.CommentDtos;
+﻿namespace MultiShop.Comment.Application.Features.CQRS.Results.UserCommentResults;
 
-public class CreateCommentDto
+public class GetUserCommentByProductIdQueryResult
 {
+    public int UserCommentId { get; set; }
     public string NameSurname { get; set; }
     public string Email { get; set; }
     public string CommentDetail { get; set; }

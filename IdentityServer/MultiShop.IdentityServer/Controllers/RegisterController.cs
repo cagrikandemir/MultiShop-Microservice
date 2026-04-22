@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
+using System;
 using System.Threading.Tasks;
 using static IdentityServer4.IdentityServerConstants;
 
 namespace MultiShop.IdentityServer.Controllers
 {
-    [Authorize(LocalApi.PolicyName)]
+    [AllowAnonymous]
+    //[Authorize(LocalApi.PolicyName)]
     [Route("[controller]")]
     [ApiController]
     public class RegisterController : ControllerBase
@@ -35,7 +37,10 @@ namespace MultiShop.IdentityServer.Controllers
                 return Ok("Kullanıcı Eklendi");
             }
             else
+            {
                 return Ok("Kullanıcı Kayıt Edilemedi");
+            }
+                
         }
     }
 }

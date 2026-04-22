@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateContactDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -23,24 +23,24 @@
         <div class="col-lg-7 mb-5">
             <div class="contact-form bg-light p-30">
                 <div id="success"></div>
-                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post">
                     <div class="control-group">
-                        <input type="text" class="form-control" id="name" placeholder="İsminiz"
+                        <input type="text" class="form-control" id="name" placeholder="İsminiz" asp-for="NameSurname"
                                required="required" data-validation-required-message="Lütfen İsminizi Giriniz" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="email" class="form-control" id="email" placeholder="E-mail"
+                        <input type="email" class="form-control" id="email" placeholder="E-mail" asp-for="Email"
                                required="required" data-validation-required-message="Lütfen Email Giriniz" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <input type="text" class="form-control" id="subject" placeholder="Konu"
+                        <input type="text" class="form-control" id="subject" placeholder="Konu" asp-for="Subject"
                                required="required" data-validation-required-message="Lütfen Bir Konu Belirtin" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <textarea class="form-control" rows="8" id="message" placeholder="Mesaj"
+                        <textarea class="form-control" rows="8" id="message" placeholder="Mesaj" asp-for="Message"
                                   required="required"
                                   data-validation-required-message="Lütfen Mesajınızı Yazınız"></textarea>
                         <p class="help-block text-danger"></p>

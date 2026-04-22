@@ -29,6 +29,12 @@ namespace MultiShop.Comment.WebApi.Controllers
         {
             return Ok( await _mediator.Send(new GetUserCommentByIdQuery(Id)));
         }
+        [HttpGet("[Action]/{Id}")]
+        public async Task<IActionResult> GetUserCommentByProductId(string Id)
+        {
+            var result = await _mediator.Send(new GetUserCommentByProductIdQuery(Id));
+            return Ok(result);
+        }
         [HttpPost("[Action]")]
         public async Task<IActionResult> CreateUserComment(CreateUserCommentCommand createUserCommentCommand)
         {

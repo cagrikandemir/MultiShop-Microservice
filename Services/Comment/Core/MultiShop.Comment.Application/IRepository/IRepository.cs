@@ -7,5 +7,4 @@ public interface IRepository<T> where T : class
     Task CreateComment(T Entity);
     Task UpdateComment(T Entity);
     Task DeleteComment(T Entity);
-
 }

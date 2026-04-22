@@ -14,5 +14,6 @@ public class GeneralMapping : Profile
         CreateMap<UserComment, RemoveUserCommentCommand>().ReverseMap();
         CreateMap<UserComment, GetUserCommentByIdQueryResult>().ReverseMap();
         CreateMap<UserComment, GetUserCommentQueryResult>().ReverseMap();
+        CreateMap<UserComment, GetUserCommentByProductIdQueryResult>().ReverseMap();
     }
 }

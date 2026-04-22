@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.DtoLayer.CatalogDtos.CommentDtos;
+using MultiShop.DtoLayer.CommentDtos;
 using Newtonsoft.Json;
 using System.Text;
 

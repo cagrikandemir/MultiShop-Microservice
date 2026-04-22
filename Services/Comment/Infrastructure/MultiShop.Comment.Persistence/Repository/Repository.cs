@@ -35,6 +35,7 @@ public class Repository<T> : IRepository<T> where T : class
         return await _context.Set<T>().FindAsync(Id);
     }
 
+
     public async Task UpdateComment(T Entity)
     {
         _context.Set<T>().Update(Entity);
