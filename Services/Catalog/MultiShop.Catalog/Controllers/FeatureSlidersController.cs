@@ -6,7 +6,7 @@ using MultiShop.Catalog.Services.FeatureSliderServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class FeatureSlidersController : ControllerBase
