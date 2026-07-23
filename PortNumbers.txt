@@ -1,6 +1,10 @@
-﻿Identity -->  5001
+﻿OCelot	 -->  5000
+Identity -->  5001
 Catalog  -->  7084
 Discount -->  7085
 Order    -->  7086
 Basket   -->  7087
 Comment	 -->  7088
+Payment  -->  7089
+Images   -->  7090
+Cargo    -->  7058
