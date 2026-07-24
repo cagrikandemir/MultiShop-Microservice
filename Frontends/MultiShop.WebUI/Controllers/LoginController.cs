@@ -73,7 +73,7 @@ namespace MultiShop.WebUI.Controllers
         //    return View();
         //}
          //[HttpPost]
-         public async Task<IActionResult> SignUp(LoginDto loginDto)
+         public async Task<IActionResult> SignIn(LoginDto loginDto)
         {
             loginDto.UserName = "cagrikandemir";
             loginDto.Password = "123456aA*";
