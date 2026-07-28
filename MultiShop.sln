@@ -38,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirement
 		FeatureSlider.txt = FeatureSlider.txt
 		OcelotCodeExample.txt = OcelotCodeExample.txt
 		PortNumbers.txt = PortNumbers.txt
+		UILoginIndexCodeExample.txt = UILoginIndexCodeExample.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{5AC5CB9E-D9C6-4142-8C94-30606A47A583}"

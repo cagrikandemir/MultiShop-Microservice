@@ -31,38 +31,8 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LoginDto loginDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var content = new StringContent(JsonSerializer.Serialize(loginDto), Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("http://localhost:5001/Login", content);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var TokenModel = JsonSerializer.Deserialize<JwtResponseModel>(JsonData,new JsonSerializerOptions {
-                    
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                });
-                if(TokenModel != null)
-                {
-                    JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-                    var token = handler.ReadJwtToken(TokenModel.Token);
-                    var claims = token.Claims.ToList();
-
-                    if (TokenModel.Token != null)
-                    {
-                        claims.Add(new Claim("multishoptoken", TokenModel.Token));
-                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
-                        var authProps = new AuthenticationProperties
-                        {
-                            ExpiresUtc = TokenModel.ExpireDate,
-                            IsPersistent= true
-                        };
-                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        var Id = _loginService.GetUserId;
-                        return RedirectToAction("Index", "Default");
-                    }
-                }
-            }
-            return View();
+            await _identityservice.SignIn(loginDto);
+            return RedirectToAction("Index", "User");
         }
 
 
