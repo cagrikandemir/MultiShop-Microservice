@@ -15,6 +15,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Services\CatalogServices\SpecialOfferServices\" />
     <Folder Include="wwwroot\RegisterUI\" />
   </ItemGroup>
 	

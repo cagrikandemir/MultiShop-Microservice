@@ -18,18 +18,7 @@ public class ProductService : IProductService
 
     public async Task CreateProductAsync(CreateProductDto createProductDto)
     {
-        var responseMessage = await _httpClient.GetAsync("Category/GetAllCategories");
-        var jsonData = await responseMessage.Content.ReadAsStringAsync();
-        StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-        var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
-        List<SelectListItem> categoryValues = (from x in values
-                                               select new SelectListItem
-                                               {
-                                                   Text = x.CategoryName,
-                                                   Value = x.CatagoryId,
-                                               }).ToList();
-        ViewBag.CategoryValues = categoryValues;
-        return View();
+        var responseMessage = await _httpClient.PostAsJsonAsync<CreateProductDto>("Product/CreateProduct", createProductDto);
     }
 
     public async Task DeleteProductyAsync(string Id)
@@ -40,19 +29,25 @@ public class ProductService : IProductService
 
     public async Task<List<ResultProductDto>> GetAllProductsAsync()
     {
-        var ResponseMessage = await _httpClient.GetAsync("Product/GetAllProducts");
+        var ResponseMessage = await _httpClient.GetAsync("Product/GetProductWithCategory");
         var jsonData = await ResponseMessage.Content.ReadAsStringAsync();
         var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
         return values;
 
     }
 
-    public Task<UpdateProductDto> GetByIdProductAsync(string Id)
+    public async Task<UpdateProductDto> GetByIdProductAsync(string Id)
     {
-        throw new NotImplementedException();
+        var ResponseMessage = await _httpClient.GetAsync("Product/GetByIdProduct/" + Id);
+        var values = await ResponseMessage.Content.ReadFromJsonAsync<UpdateProductDto>();
+        return values;
     }
 
-    public async Task<List<ResultProductWithCategoryDto>> GetProductWithCategory()
+    public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
+    {
+       var responseMessage = await _httpClient.PutAsJsonAsync<UpdateProductDto>("Product/UpdateProduct",updateProductDto);
+    }
+    public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryAsync()
     {
         var responseMessage = await _httpClient.GetAsync("Product/GetProductWithCategory");
         var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -60,8 +55,11 @@ public class ProductService : IProductService
         return values;
     }
 
-    public Task UpdateProductAsync(UpdateProductDto updateProductDto)
+    public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId)
     {
-        throw new NotImplementedException();
+        var responseMessage = await _httpClient.GetAsync("Products/GetProductWithCategoryByIdAsync/" + CategoryId);
+        var jsonData = await responseMessage.Content.ReadAsStringAsync();
+        var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+        return values;
     }
 }

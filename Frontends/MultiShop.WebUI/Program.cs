@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.WebUI.Handlers;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Concrete;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Settings;
@@ -45,6 +46,8 @@ builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTo
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+
+//Service Yapı Başlangıcı
 builder.Services.AddHttpClient<IUserService, UserService>(opt =>
 {
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
@@ -55,6 +58,12 @@ builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+//Service Yapı Sonu
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
