@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
+using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
@@ -8,29 +9,24 @@ using System.Threading.Tasks;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+   // [AllowAnonymous]
     [Area("Admin")]
     [Route("Admin/Brand")]
     public class BrandController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IBrandService _brandService;
 
-        public BrandController(IHttpClientFactory httpClientFactory)
+        public BrandController(IHttpClientFactory httpClientFactory, IBrandService brandService)
         {
             _httpClientFactory = httpClientFactory;
+            _brandService = brandService;
         }
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage =await client.GetAsync("https://localhost:7084/Brand/GetAllBrands");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<List<ResultBrandDto>>(JsonData);
-                return View(result);
-            }
-            return View();
+            var response = await _brandService.GetAllBrandAsync();
+            return View(response);
         }
         [Route("CreateBrand")]
         [HttpGet]
@@ -42,54 +38,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var Jsondata = JsonConvert.SerializeObject(createBrandDto);
-            StringContent stringContent = new StringContent(Jsondata, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7084/Brand/CreateBrand", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Brand", new { area = "Admin" });
-            }
-            return View();
+           await _brandService.CreateBrandAsync(createBrandDto);
+           return RedirectToAction("Index", "Brand", new { area = "Admin" });
         }
         [Route("DeleteBrand/{Id}")]
         public async Task<IActionResult>DeleteBrand(string Id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7084/Brand/DeleteBrand/"+Id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Brand", new { area = "Admin" });
-            }
-            return View();
+           await _brandService.DeleteBrandAsync(Id);
+           return RedirectToAction("Index", "Brand", new { area = "Admin" });
         }
         [Route("UpdateBrand/{Id}")]
         [HttpGet]
         public async Task<IActionResult> UpdateBrand(string Id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7084/Brand/GetBrandById/"+Id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData =await responseMessage.Content.ReadAsStringAsync();
-                var Result = JsonConvert.DeserializeObject<UpdateBrandDto>(jsonData);
-                return View(Result);
-            }
-            return View();
+            var response = await _brandService.GetByIdBrandAsync(Id);
+            return View(response);
         }
         [Route("UpdateBrand/{Id}")]
         [HttpPost]
         public async Task<IActionResult>UpdateBrand(UpdateBrandDto updateBrandDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var JsonData = JsonConvert.SerializeObject(updateBrandDto);
-            StringContent stringContent = new StringContent(JsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7084/Brand/UpdateBrand/", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
-            {
+                await _brandService.UpdateBrandAsync(updateBrandDto);
                 return RedirectToAction("Index", "Brand", new { area = "Admin" });
-            }
-            return View();
         }
     }
 }
