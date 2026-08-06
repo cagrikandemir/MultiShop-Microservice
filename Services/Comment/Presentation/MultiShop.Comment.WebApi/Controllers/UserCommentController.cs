@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ using MultiShop.Comment.Application.Features.CQRS.Queries.UserCommentQueries;
 
 namespace MultiShop.Comment.WebApi.Controllers
 {
-    
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserCommentController : ControllerBase
@@ -29,7 +30,7 @@ namespace MultiShop.Comment.WebApi.Controllers
         {
             return Ok( await _mediator.Send(new GetUserCommentByIdQuery(Id)));
         }
-        [HttpGet("[Action]/{Id}")]
+        [HttpGet("GetUserCommentByProductId/{Id}")]
         public async Task<IActionResult> GetUserCommentByProductId(string Id)
         {
             var result = await _mediator.Send(new GetUserCommentByProductIdQuery(Id));

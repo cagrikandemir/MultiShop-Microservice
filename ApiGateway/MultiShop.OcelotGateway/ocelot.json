@@ -71,7 +71,7 @@
     }, //Comment Microservice
     {
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamPathTemplate": "/Services/Comment/{everything}",
+      "UpstreamPathTemplate": "/Services/UserComment/{everything}",
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [

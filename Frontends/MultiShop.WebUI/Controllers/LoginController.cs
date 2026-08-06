@@ -44,7 +44,7 @@ namespace MultiShop.WebUI.Controllers
          //[HttpPost]
          public async Task<IActionResult> SignIn(LoginDto loginDto)
         {
-            loginDto.UserName = "cagrikandemir";
+            loginDto.UserName = "cagri";
             loginDto.Password = "123456aA*";
             await _identityservice.SignIn(loginDto);
             return RedirectToAction ("Index", "User");

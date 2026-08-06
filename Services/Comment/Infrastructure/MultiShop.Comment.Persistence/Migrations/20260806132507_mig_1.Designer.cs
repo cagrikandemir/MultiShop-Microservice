@@ -12,7 +12,7 @@ using MultiShop.Comment.Persistence.Context;
 namespace MultiShop.Comment.Persistence.Migrations
 {
     [DbContext(typeof(CommentContext))]
-    [Migration("20260226115706_mig_1")]
+    [Migration("20260806132507_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
