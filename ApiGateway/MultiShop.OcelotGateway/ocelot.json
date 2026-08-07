@@ -55,7 +55,7 @@
     {
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamPathTemplate": "/Services/Basket/{everything}",
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/api/Basket/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
