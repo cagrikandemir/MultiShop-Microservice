@@ -7,7 +7,7 @@ using MultiShop.Catalog.Services.ContactServices;
 namespace MultiShop.Catalog.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ContactController : ControllerBase
     {
