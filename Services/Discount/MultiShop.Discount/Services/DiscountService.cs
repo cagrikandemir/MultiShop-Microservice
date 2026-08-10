@@ -43,6 +43,12 @@ public class DiscountService : IDiscountService
         return _mapper.Map<GetByIdCouponDto>(value);
     }
 
+    public async Task<ResultCouponDto> GetCodeDetailByCodeAsync(string code)
+    {
+        var value = await _couponCollection.Find<Coupon>(x => x.Code == code).FirstOrDefaultAsync();
+        return _mapper.Map<ResultCouponDto>(value);
+    }
+
     public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
     {
         var value = _mapper.Map<Coupon>(updateCouponDto);

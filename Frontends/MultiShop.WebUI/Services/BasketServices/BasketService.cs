@@ -20,9 +20,11 @@ public class BasketService : IBasketService
             {
                 values.BasketItems.Add(basketItemDto);
             }
-            else
+            else 
+            { 
                 values = new BasketTotalDto();
                 values.BasketItems.Add(basketItemDto);
+            }
         }
         await SaveBasket(values);
     }
@@ -50,6 +52,6 @@ public class BasketService : IBasketService
 
     public async Task SaveBasket(BasketTotalDto basketTotalDto)
     {
-        await _httpClient.PostAsJsonAsync<BasketTotalDto>("", basketTotalDto);
+        await _httpClient.PostAsJsonAsync<BasketTotalDto>("SaveMyBasket", basketTotalDto);
     }
 }
