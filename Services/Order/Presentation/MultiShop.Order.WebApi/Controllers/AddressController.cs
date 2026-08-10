@@ -6,7 +6,8 @@ using MultiShop.Order.Application.Features.CQRS.Queries.AddressQueries;
 
 namespace MultiShop.Order.WebApi.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
+    //[Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AddressController : ControllerBase
