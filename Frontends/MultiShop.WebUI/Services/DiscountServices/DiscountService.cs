@@ -18,4 +18,11 @@ public class DiscountService : IDiscountService
         return values;
 
     }
+
+    public async Task<int> GetDiscountCouponRate(string code)
+    {
+        var responseMessage = await _httpClient.GetAsync("Discount/GetDiscountCouponRate/" + code);
+        var jsonData = await responseMessage.Content.ReadFromJsonAsync<int>();
+        return jsonData;
+    }
 }

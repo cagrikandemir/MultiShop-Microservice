@@ -54,4 +54,10 @@ public class DiscountService : IDiscountService
         var value = _mapper.Map<Coupon>(updateCouponDto);
         await _couponCollection.ReplaceOneAsync(x=>x.CouponId==updateCouponDto.CouponId,value);
     }
+
+    async Task<int> IDiscountService.GetDiscountCouponRate(string code)
+    {
+        var value = await  _couponCollection.Find<Coupon>(x => x.Code == code).Project(x => x.Rate).FirstOrDefaultAsync();
+        return value;
+    }
 }
