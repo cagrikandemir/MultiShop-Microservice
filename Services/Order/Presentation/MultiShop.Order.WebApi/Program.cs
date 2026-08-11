@@ -15,6 +15,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     //opt.RefreshOnIssuerKeyNotFound = true;
 });
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IOrderingRepository, OrderingRepository>(); 
+builder.Services.AddScoped<IOrderingDetailRepository, OrderingDetailRepository>(); 
 builder.Services.addApplicationServices(builder.Configuration);
 
 builder.Services.AddDbContext<OrderContext>(options =>

@@ -11,6 +11,7 @@ public class OrderingMapping : Profile
     public OrderingMapping() {
         CreateMap<Ordering, GetOrderingByIdQueryResult>().ReverseMap();
         CreateMap<Ordering, GetOrderingQueryResult>().ReverseMap();
+        CreateMap<Ordering, GetOrderingByUserIdQueryResult>().ReverseMap();
         CreateMap<Ordering,CreateOrderingCommand>().ReverseMap();
         CreateMap<Ordering,RemoveOrderingCommand>().ReverseMap();
         CreateMap<Ordering,UpdateOrderingCommand>().ReverseMap();

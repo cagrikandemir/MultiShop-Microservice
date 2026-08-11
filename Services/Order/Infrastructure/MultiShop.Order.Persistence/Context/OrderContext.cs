@@ -12,7 +12,7 @@ public class OrderContext : DbContext
     //{
     //    optionsBuilder.UseSqlServer("Server=localhost;initial Catalog=MultiShopOrderDb;integrated Security=true;TrustServerCertificate=True");
     //}
-    DbSet<Address> Addresses { get; set; }
-    DbSet<OrderDetail> OrderDetails { get; set; }
-    DbSet<Ordering> Orderings { get; set; }
+    public DbSet<Address> Addresses { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; }
+    public DbSet<Ordering> Orderings { get; set; }
 }

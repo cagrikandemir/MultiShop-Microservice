@@ -15,9 +15,26 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\User\Data\" />
+    <Folder Include="Areas\User\Models\" />
     <Folder Include="Services\OrderServices\OrderingServices\" />
     <Folder Include="Services\OrderServices\OrderDetailServices\" />
     <Folder Include="wwwroot\RegisterUI\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="wwwroot\_UserTemplate\css\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\fonts\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\fonts\Roboto\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\images\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\images\auth\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\images\faces\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\js\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\pages\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\scss\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\scss\components\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\template\.DS_Store" />
+    <None Include="wwwroot\_UserTemplate\vendors\.DS_Store" />
   </ItemGroup>
 	
   <ItemGroup>

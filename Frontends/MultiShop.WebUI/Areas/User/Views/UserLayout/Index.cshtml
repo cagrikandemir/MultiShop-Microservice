@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("_UserLayoutHeadComponentPartial")
+<body>
+    <div class="container-scroller d-flex">
+        @await Component.InvokeAsync("_UserLayoutSideBarComponentPartial")
+        <div class="container-fluid page-body-wrapper">
+            @await Component.InvokeAsync("_UserLayoutNavbarComponentPartial")
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/_UserTemplate/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/_UserTemplate/js/off-canvas.js"></script>
+    <script src="~/_UserTemplate/js/hoverable-collapse.js"></script>
+    <script src="~/_UserTemplate/js/template.js"></script>
+</body>
+
+</html>
