@@ -140,7 +140,7 @@
     {
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
       "UpstreamPathTemplate": "/Services/UserMessage/{everything}",
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/UserMessage/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {

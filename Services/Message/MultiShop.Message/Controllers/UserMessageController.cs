@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Message.Dtos;
 using MultiShop.Message.Services;
 
 namespace MultiShop.Message.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UserMessageController : ControllerBase
