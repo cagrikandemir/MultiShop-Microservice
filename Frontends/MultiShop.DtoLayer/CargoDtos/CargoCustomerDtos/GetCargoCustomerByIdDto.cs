@@ -1,0 +1,13 @@
+﻿namespace MultiShop.DtoLayer.CargoDtos.CargoCustomerDtos;
+
+public class GetCargoCustomerByIdDto
+{
+    public int CargoCustomerId { get; set; }
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
+    public string District { get; set; }
+    public string City { get; set; }
+    public string Adress { get; set; }
+}

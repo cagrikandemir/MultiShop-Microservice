@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="CargoDtos\CargoDetailDtos\" />
+    <Folder Include="CargoDtos\CargoOperationDtos\" />
+  </ItemGroup>
+
 </Project>
