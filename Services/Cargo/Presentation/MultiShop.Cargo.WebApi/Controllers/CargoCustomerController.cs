@@ -30,6 +30,11 @@ namespace MultiShop.Cargo.WebApi.Controllers
         {
             return Ok(await _mediator.Send(new GetCargoCustomerByIdQuery(Id)));
         }
+        [HttpGet("[action]/{Id}")]
+        public async Task<IActionResult> GetCargoCustomerByUserId(string Id)
+        {
+            return Ok(await _mediator.Send(new GetCargoCustomerByUserIdQuery(Id)));
+        }
         [HttpPost("[action]")]
         public async Task<IActionResult> CreateCargoCustomer(CreateCargoCustomerCommand createCargoCustomerCommand)
         {

@@ -1,6 +1,6 @@
-﻿namespace MultiShop.DtoLayer.CargoDtos.CargoCustomerDtos;
+﻿namespace MultiShop.Cargo.Application.Features.CQRS.Results.CargoCustomerResults;
 
-public class GetCargoCustomerByIdDto
+public class GetCargoCustomerByUserIdQueryResult
 {
     public int CargoCustomerId { get; set; }
     public string Name { get; set; }
@@ -11,5 +11,4 @@ public class GetCargoCustomerByIdDto
     public string City { get; set; }
     public string Adress { get; set; }
     public string UserCustomerId { get; set; }
-
 }

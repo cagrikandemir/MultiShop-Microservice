@@ -27,6 +27,7 @@ public class GeneralMapping: Profile
         CreateMap<CargoCustomer,UpdateCargoCustomerCommand>().ReverseMap();
         CreateMap<CargoCustomer,GetCargoCustomerByIdQueryResult>().ReverseMap();
         CreateMap<CargoCustomer,GetCargoCustomerQueryResult>().ReverseMap();
+        CreateMap<CargoCustomer,GetCargoCustomerByUserIdQueryResult>().ReverseMap();
 
 
         CreateMap<CargoDetail,CreateCargoDetailCommand>().ReverseMap();

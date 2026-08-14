@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using MultiShop.WebUI.Services.Interfaces;
 
 namespace MultiShop.WebUI.Controllers;
@@ -17,4 +18,5 @@ public class UserController : Controller
         var values = await _userService.GetUserInfo();
         return View(values);
     }
+
 }
