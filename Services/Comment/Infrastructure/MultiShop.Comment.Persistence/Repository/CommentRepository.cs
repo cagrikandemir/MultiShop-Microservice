@@ -14,9 +14,21 @@ public class CommentRepository : ICommentRepository
         _context = context;
     }
 
+    public async Task<int> GetActiveCommentCount()
+    {
+        return await _context.Set<UserComment>()
+        .CountAsync(x => x.Status == true);
+    }
+
     public async Task<List<UserComment>> GetCommentByProductIdAsync(string Id)
     {
         var result = await _context.Set<UserComment>().Where(x=>x.ProductId==Id).ToListAsync();
         return result;
+    }
+
+    public async Task<int> GetPassiveCommentCount()
+    {
+        return await _context.Set<UserComment>()
+        .CountAsync(x => x.Status == false);
     }
 }

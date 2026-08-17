@@ -1,7 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Comment.Application.Features.CQRS.Commands.UserCommentCommands;
 using MultiShop.Comment.Application.Features.CQRS.Queries.UserCommentQueries;
@@ -35,6 +33,18 @@ namespace MultiShop.Comment.WebApi.Controllers
         {
             var result = await _mediator.Send(new GetUserCommentByProductIdQuery(Id));
             return Ok(result);
+        }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetActiveComment()
+        {
+            int activecount =await _mediator.Send(new GetActiveUserCommentQuery());
+            return Ok(activecount);
+        }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetPassiveComment()
+        {
+            int activecount = await _mediator.Send(new GetPassiveUserCommentQuery());
+            return Ok(activecount);
         }
         [HttpPost("[Action]")]
         public async Task<IActionResult> CreateUserComment(CreateUserCommentCommand createUserCommentCommand)

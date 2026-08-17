@@ -49,6 +49,15 @@ public class DiscountService : IDiscountService
         return _mapper.Map<ResultCouponDto>(value);
     }
 
+    public async Task<int> GetDiscountCouponCount()
+    {
+        var count = await _couponCollection.CountDocumentsAsync(
+        Builders<Coupon>.Filter.Empty
+    );
+
+        return (int)count;
+    }
+
     public async Task UpdateCouponAsync(UpdateCouponDto updateCouponDto)
     {
         var value = _mapper.Map<Coupon>(updateCouponDto);

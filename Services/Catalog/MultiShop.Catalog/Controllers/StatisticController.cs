@@ -20,5 +20,35 @@ namespace MultiShop.Catalog.Controllers
             var values = _statisticService.GetBrandCount();
             return Ok(values);
         }
+        [HttpGet("[action]")]
+        public IActionResult GetCategoryCount()
+        {
+            var values = _statisticService.GetCategoryCount();
+            return Ok(values);
+        }
+        [HttpGet("[action]")]
+        public IActionResult GetProductCount()
+        {
+            var values = _statisticService.GetProductCount();
+            return Ok(values);
+        }
+        [HttpGet("[action]")]
+        public IActionResult GetAvgPrice()
+        {
+            var values = _statisticService.GetAveragePrice();
+            return Ok(values);
+        }
+        [HttpGet("[action]")]
+        public async Task< IActionResult> GetProductMaxPrice()
+        {
+            var values = await _statisticService.GetMaxPriceProductName();
+            return Ok(values);
+        }
+        [HttpGet("[action]")]
+        public async Task< IActionResult> GetProductMinPrice()
+        {
+            var values = await _statisticService.GetMinPriceProductName();
+            return Ok(values);
+        }
     }
 }

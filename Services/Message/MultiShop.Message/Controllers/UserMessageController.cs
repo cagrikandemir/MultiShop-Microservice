@@ -42,6 +42,13 @@ namespace MultiShop.Message.Controllers
             var values = await _userMessageService.GetInBoxMessagesAsync(Id);
             return Ok(values);
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetTotalMessage()
+        {
+            var values = await _userMessageService.GetTotalMessages();
+            return Ok(values);
+        }
         [HttpPost("[action]")]
         public async Task<IActionResult>CreateUserMessage(CreateMessageDto createMessageDto)
         {

@@ -9,5 +9,5 @@ public class CommentContext : DbContext
     {
     }
 
-    DbSet<UserComment> UserComments { get; set; }
+    public DbSet<UserComment> UserComments { get; set; }
 }

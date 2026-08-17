@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Settings;
 
@@ -19,9 +20,19 @@ public class StatisticService : IStatisticService
         _brands = database.GetCollection<Brand>(_databaseSettings.BrandCollectionName);
     }
 
-    public decimal GetAveragePrice()
+    public async Task<decimal> GetAveragePrice()
     {
-        throw new NotImplementedException();
+        var pipeline = new BsonDocument[]
+        {
+            new BsonDocument("$group",new BsonDocument
+            {
+                {"_id",null },
+                {"avarageprice",new BsonDocument("$avg","$ProductPrice") }
+            })
+        };
+        var result = await _products.AggregateAsync<BsonDocument>(pipeline);
+        var value = result.FirstOrDefault().GetValue("avarageprice", decimal.Zero).AsDecimal;
+        return value;
     }
 
     public long GetBrandCount()
@@ -31,11 +42,37 @@ public class StatisticService : IStatisticService
 
     public long GetCategoryCount()
     {
-        throw new NotImplementedException();
+        return _categories.CountDocuments(FilterDefinition<Category>.Empty);
+    }
+
+    public async Task<string> GetMaxPriceProductName()
+    {
+        var filter = Builders<Product>.Filter.Empty;
+        var sort = Builders<Product>.Sort.Descending(x => x.ProductPrice);
+        var projection = Builders<Product>.Projection.Include(y =>
+                                                  y.ProductName).Exclude("ProductId");
+        var product = await _products.Find(filter)
+                                            .Sort(sort)
+                                            .Project(projection)
+                                            .FirstOrDefaultAsync();
+        return product.GetValue("ProductName").AsString;
+    }
+
+    public async Task<string> GetMinPriceProductName()
+    {
+        var filter = Builders<Product>.Filter.Empty;
+        var sort = Builders<Product>.Sort.Ascending(x => x.ProductPrice);
+        var projection = Builders<Product>.Projection.Include(y =>
+                                                  y.ProductName).Exclude("ProductId");
+        var product = await _products.Find(filter)
+                                            .Sort(sort)
+                                            .Project(projection)
+                                            .FirstOrDefaultAsync();
+        return product.GetValue("ProductName").AsString;
     }
 
     public long GetProductCount()
     {
-        throw new NotImplementedException();
+        return _products.CountDocuments(FilterDefinition<Product>.Empty);
     }
 }
