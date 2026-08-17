@@ -27,7 +27,14 @@ namespace MultiShop.WebUI.Services.CommentServices
 
         public async Task DeleteCommentAsync(string Id)
         {
-            await _httpClient.DeleteAsync("UserComment//DeleteComment/" + Id);
+            await _httpClient.DeleteAsync("UserComment/DeleteComment/" + Id);
+        }
+
+        public async Task<int> GetActiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("UserComment/GetActiveCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
         }
 
         public async Task<List<ResultCommentDto>> GetAllCommentAsync()
@@ -43,6 +50,38 @@ namespace MultiShop.WebUI.Services.CommentServices
             var responseMessage = await _httpClient.GetAsync("UserComment/GetUserCommentById/" + Id);
             var result = await responseMessage.Content.ReadFromJsonAsync<UpdateCommentDto>();
             return result;
+        }
+
+        public async Task<int> GetPassiveCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("UserComment/GetPassiveCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+        }
+
+        public async Task<int> GetTotalCommentCount()
+        {
+            var responseMessage = await _httpClient.GetAsync("UserComment/GetTotalCommentCount");
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
+            return values;
+            //    var responseMessage = await _httpClient.GetAsync(
+            //"UserComment/GetTotalCommentCount");
+
+            //    var content = await responseMessage.Content.ReadAsStringAsync();
+
+            //    Console.WriteLine("================================");
+            //    Console.WriteLine("STATUS CODE: " + responseMessage.StatusCode);
+            //    Console.WriteLine("REQUEST URL: " + responseMessage.RequestMessage?.RequestUri);
+            //    Console.WriteLine("CONTENT: [" + content + "]");
+            //    Console.WriteLine("================================");
+
+            //    if (!responseMessage.IsSuccessStatusCode)
+            //    {
+            //        throw new Exception(
+            //            $"Comment API Hatası: {responseMessage.StatusCode} - {content}");
+            //    }
+
+            //    return int.Parse(content);
         }
 
         public async Task UpdateCommentAsync(UpdateCommentDto updateCommentDto)

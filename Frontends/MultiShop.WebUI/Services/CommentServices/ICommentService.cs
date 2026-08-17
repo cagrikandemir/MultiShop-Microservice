@@ -11,4 +11,8 @@ public interface ICommentService
     Task<UpdateCommentDto> GetByIdCommentAsync(string Id);
     Task<List<ResultCommentDto>> CommentListByProductId(string id);
 
+    Task<int> GetActiveCommentCount();
+    Task<int> GetPassiveCommentCount();
+    Task<int> GetTotalCommentCount();
+
 }

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Services.StatisticServices;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class StatisticController : ControllerBase
@@ -15,27 +17,27 @@ namespace MultiShop.Catalog.Controllers
             _statisticService = statisticService;
         }
         [HttpGet("[action]")]
-        public IActionResult GetBrandCount()
+        public async Task<IActionResult> GetBrandCount()
         {
-            var values = _statisticService.GetBrandCount();
+            var values =await _statisticService.GetBrandCount();
             return Ok(values);
         }
         [HttpGet("[action]")]
-        public IActionResult GetCategoryCount()
+        public async Task< IActionResult> GetCategoryCount()
         {
-            var values = _statisticService.GetCategoryCount();
+            var values = await _statisticService.GetCategoryCount();
             return Ok(values);
         }
         [HttpGet("[action]")]
-        public IActionResult GetProductCount()
+        public async Task<IActionResult> GetProductCount()
         {
-            var values = _statisticService.GetProductCount();
+            var values =await _statisticService.GetProductCount();
             return Ok(values);
         }
         [HttpGet("[action]")]
-        public IActionResult GetAvgPrice()
+        public async Task< IActionResult> GetAvgPrice()
         {
-            var values = _statisticService.GetAveragePrice();
+            var values =await _statisticService.GetAveragePrice();
             return Ok(values);
         }
         [HttpGet("[action]")]

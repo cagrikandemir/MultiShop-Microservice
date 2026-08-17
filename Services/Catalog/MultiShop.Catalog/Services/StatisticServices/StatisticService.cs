@@ -35,12 +35,12 @@ public class StatisticService : IStatisticService
         return value;
     }
 
-    public long GetBrandCount()
+    public async Task<long> GetBrandCount()
     {
         return _brands.CountDocuments(FilterDefinition<Brand>.Empty);
     }
 
-    public long GetCategoryCount()
+    public async Task<long> GetCategoryCount()
     {
         return _categories.CountDocuments(FilterDefinition<Category>.Empty);
     }
@@ -71,7 +71,7 @@ public class StatisticService : IStatisticService
         return product.GetValue("ProductName").AsString;
     }
 
-    public long GetProductCount()
+    public async Task<long> GetProductCount()
     {
         return _products.CountDocuments(FilterDefinition<Product>.Empty);
     }
