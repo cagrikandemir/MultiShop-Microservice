@@ -101,6 +101,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{562C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message", "Services\Message\MultiShop.Message\MultiShop.Message.csproj", "{D658C244-CDC1-42D0-9F41-6DBB1CB8EC36}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalrRealTime", "SignalrRealTime", "{ABA7D71C-0C15-4CBC-BFC9-F88007DDABB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.SignalrRealTimeApi", "Services\SignalrRealTime\MultiShop.SignalrRealTimeApi\MultiShop.SignalrRealTimeApi.csproj", "{88FECACF-836B-488B-90A4-51F1A98857DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +199,10 @@ Global
 		{D658C244-CDC1-42D0-9F41-6DBB1CB8EC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D658C244-CDC1-42D0-9F41-6DBB1CB8EC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D658C244-CDC1-42D0-9F41-6DBB1CB8EC36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FECACF-836B-488B-90A4-51F1A98857DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FECACF-836B-488B-90A4-51F1A98857DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FECACF-836B-488B-90A4-51F1A98857DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FECACF-836B-488B-90A4-51F1A98857DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,6 +248,8 @@ Global
 		{9F64E976-5D6D-4767-B95D-2BD590166A74} = {D84F59BA-7EAA-49E6-8D5A-F53FC79A8A2F}
 		{562C88D4-7AF7-4364-8871-261B8E652C2D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D658C244-CDC1-42D0-9F41-6DBB1CB8EC36} = {562C88D4-7AF7-4364-8871-261B8E652C2D}
+		{ABA7D71C-0C15-4CBC-BFC9-F88007DDABB8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{88FECACF-836B-488B-90A4-51F1A98857DA} = {ABA7D71C-0C15-4CBC-BFC9-F88007DDABB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0BBDFA8-F44E-4814-B7FE-7CFECA9B0E02}

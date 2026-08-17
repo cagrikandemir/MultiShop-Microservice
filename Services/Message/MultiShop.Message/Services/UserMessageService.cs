@@ -56,6 +56,12 @@ public class UserMessageService : IUserMessageService
         return _mapper.Map<List<ResultSendBoxMessageDto>>(values);
     }
 
+    public async Task<int> GetTotalMessageCountByReceiverId(string Id)
+    {
+        int value = await _messageContext.UserMessages.Where(x => x.ReceiverId == Id).CountAsync();
+        return value;
+    }
+
     public async Task<int> GetTotalMessages()
     {
         var values = await _messageContext.UserMessages.CountAsync();
